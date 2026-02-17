@@ -63,6 +63,7 @@ function wcg_ranked_list_item_output_schema() {
 		$product_types  = array( 'Product', 'SoftwareApplication' );
 		$place_types    = array( 'Place', 'LocalBusiness', 'Restaurant' );
 		$creative_types = array( 'Book', 'Movie', 'CreativeWork' );
+		$podcast_types  = array( 'PodcastSeries', 'PodcastEpisode' );
 
 		if ( 'Platform' === $schema_type ) {
 			wcg_ranked_list_item_add_platform_schema( $item, $attrs );
@@ -72,6 +73,8 @@ function wcg_ranked_list_item_output_schema() {
 			wcg_ranked_list_item_add_place_schema( $item, $attrs );
 		} elseif ( in_array( $schema_type, $creative_types, true ) ) {
 			wcg_ranked_list_item_add_creative_schema( $item, $attrs );
+		} elseif ( in_array( $schema_type, $podcast_types, true ) ) {
+			wcg_ranked_list_item_add_podcast_schema( $item, $attrs, $schema_type );
 		}
 
 		// Add aggregate rating if provided.
@@ -189,6 +192,27 @@ function wcg_ranked_list_item_add_creative_schema( &$item, $attrs ) {
 		);
 	}
 	if ( ! empty( $attrs['datePublished'] ) ) {
+		$item['datePublished'] = $attrs['datePublished'];
+	}
+}
+
+/**
+ * Add PodcastSeries / PodcastEpisode schema properties.
+ * Uses author (host/creator), datePublished (episode). Prefers hero image for cover art when set.
+ */
+function wcg_ranked_list_item_add_podcast_schema( &$item, $attrs, $schema_type ) {
+	if ( ! empty( $attrs['heroImageUrl'] ) ) {
+		$item['image'] = $attrs['heroImageUrl'];
+	} elseif ( ! empty( $attrs['imageUrl'] ) && empty( $item['image'] ) ) {
+		$item['image'] = $attrs['imageUrl'];
+	}
+	if ( ! empty( $attrs['author'] ) ) {
+		$item['author'] = array(
+			'@type' => 'Person',
+			'name'  => $attrs['author'],
+		);
+	}
+	if ( 'PodcastEpisode' === $schema_type && ! empty( $attrs['datePublished'] ) ) {
 		$item['datePublished'] = $attrs['datePublished'];
 	}
 }

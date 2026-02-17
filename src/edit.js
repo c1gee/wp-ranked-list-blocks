@@ -32,6 +32,8 @@ const SCHEMA_TYPES = [
 	{ label: __( 'Book', 'wp-ranked-list-blocks' ), value: 'Book' },
 	{ label: __( 'Movie', 'wp-ranked-list-blocks' ), value: 'Movie' },
 	{ label: __( 'Creative Work', 'wp-ranked-list-blocks' ), value: 'CreativeWork' },
+	{ label: __( 'Podcast Series', 'wp-ranked-list-blocks' ), value: 'PodcastSeries' },
+	{ label: __( 'Podcast Episode', 'wp-ranked-list-blocks' ), value: 'PodcastEpisode' },
 ];
 
 const CURRENCY_OPTIONS = [
@@ -43,6 +45,7 @@ const CURRENCY_OPTIONS = [
 const PRODUCT_TYPES = [ 'Product', 'SoftwareApplication' ];
 const PLACE_TYPES = [ 'Place', 'LocalBusiness', 'Restaurant' ];
 const CREATIVE_TYPES = [ 'Book', 'Movie', 'CreativeWork' ];
+const PODCAST_TYPES = [ 'PodcastSeries', 'PodcastEpisode' ];
 const PLATFORM_TYPE = 'Platform';
 
 export default function Edit( { attributes, setAttributes, clientId } ) {
@@ -133,6 +136,8 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 	const isProduct = PRODUCT_TYPES.includes( schemaType );
 	const isPlace = PLACE_TYPES.includes( schemaType );
 	const isCreative = CREATIVE_TYPES.includes( schemaType );
+	const isPodcast = PODCAST_TYPES.includes( schemaType );
+	const isCreativeOrPodcast = isCreative || isPodcast;
 	const isPlatform = schemaType === PLATFORM_TYPE;
 
 	return (
@@ -320,10 +325,10 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 					</PanelBody>
 				) }
 
-				{ isCreative && (
+				{ isCreativeOrPodcast && (
 					<PanelBody
 						title={ __(
-							'Creative Work Details',
+							isPodcast ? 'Podcast Details' : 'Creative Work Details',
 							'wp-ranked-list-blocks'
 						) }
 						initialOpen={ true }

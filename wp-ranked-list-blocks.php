@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP Ranked List Blocks
  * Description: Semantically marked-up ranked list (listicle) blocks for WordPress. Outputs schema.org ItemList JSON-LD for search and AI ingestion.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Requires at least: 6.0
  * Requires PHP: 8.1
  * Author: Chris Gee
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'WCG_RANKED_LIST_ITEM_VERSION', '1.0.0' );
+define( 'WCG_RANKED_LIST_ITEM_VERSION', '1.1.0' );
 define( 'WCG_RANKED_LIST_ITEM_PATH', plugin_dir_path( __FILE__ ) );
 
 require_once WCG_RANKED_LIST_ITEM_PATH . 'includes/schema.php';

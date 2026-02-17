@@ -1,6 +1,6 @@
 {
 	"name": "wp-ranked-list-blocks",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"private": true,
 	"description": "Semantically marked-up ranked list blocks for WordPress with ItemList schema for search and AI ingestion",
 	"scripts": {
