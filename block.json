@@ -1,0 +1,108 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wcg/ranked-list-block",
+	"version": "1.0.0",
+	"title": "Ranked List Item",
+	"category": "widgets",
+	"icon": "editor-ol",
+	"description": "Create ItemList-compliant ranked content with automatic position numbering.",
+	"textdomain": "wp-ranked-list-blocks",
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
+	"attributes": {
+		"schemaType": {
+			"type": "string",
+			"default": "Product"
+		},
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"subtitle": {
+			"type": "string",
+			"default": ""
+		},
+		"description": {
+			"type": "string",
+			"default": ""
+		},
+		"url": {
+			"type": "string",
+			"default": ""
+		},
+		"urlButtonText": {
+			"type": "string",
+			"default": "View site"
+		},
+		"imageUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"imageId": {
+			"type": "number",
+			"default": 0
+		},
+		"imageAlt": {
+			"type": "string",
+			"default": ""
+		},
+		"heroImageUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"heroImageId": {
+			"type": "number",
+			"default": 0
+		},
+		"heroImageAlt": {
+			"type": "string",
+			"default": ""
+		},
+		"price": {
+			"type": "string",
+			"default": ""
+		},
+		"currency": {
+			"type": "string",
+			"default": "GBP"
+		},
+		"ratingValue": {
+			"type": "string",
+			"default": ""
+		},
+		"reviewCount": {
+			"type": "string",
+			"default": ""
+		},
+		"address": {
+			"type": "string",
+			"default": ""
+		},
+		"telephone": {
+			"type": "string",
+			"default": ""
+		},
+		"author": {
+			"type": "string",
+			"default": ""
+		},
+		"datePublished": {
+			"type": "string",
+			"default": ""
+		},
+		"alternateName": {
+			"type": "string",
+			"default": ""
+		},
+		"sameAs": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}
